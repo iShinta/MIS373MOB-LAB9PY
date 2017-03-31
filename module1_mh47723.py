@@ -28,7 +28,7 @@ def fibonacci():
     if(isinstance(n, int) and n > 0):
         res = ""
         for i in range(n):
-            res += str(fib(i+1)) + ", "
+            res += str(fib(i+1)) + "\t"
         print(res)
 
 def fib(n):
@@ -161,37 +161,76 @@ def palindrome():
     user = raw_input("Palindrome: Enter a string : ")
     for i in range(len(user)):
         # print(user[i] + "" + user[-i-1])
-        if(user[i] != user[-i-1]):
+        if(user[i].lower() != user[-i-1].lower()):
             win = False
     if(win): print("It's a palindrome")
     else: print("It's not a palindrome")
 
 def odometer():
-    list1 = ['', '', '', '', '', '']
-    print(list1)
+    list1 = [0, 0, 0, 0, 0, 0]
+
+    for i in range(10):
+        list1[0] = i
+        for j in range(10):
+            list1[1] = j
+            for k in range(10):
+                list1[2] = k
+                for l in range(10):
+                    list1[3] = l
+                    for m in range(10):
+                        list1[4] = m
+                        for n in range(10):
+                            list1[5] = n
+                            list2 = list1[:]
+                            # print list1
+
+                            # the last 4 digits were palindromic
+                            #[0,1,2,3,4,5]
+                            if(list2[2] == list2[5] and list2[3] == list2[4]):
+                                # print(list1)
+                                # print(list2)
+
+                                #One mile later, the last 5 numbers were palindromic
+                                #[0,1,2,3,4,5]
+                                list2[5] += 1
+                                if(list2[1] == list2[5] and list2[2] == list2[4]):
+                                    # print(list1)
+
+                                    #One mile after that, the middle 4 out of 6 numbers were palindromic.
+                                    #[0,1,2,3,4,5]
+                                    list2[5] += 1
+                                    if(list2[1] == list2[4] and list2[2] == list2[3]):
+                                        # print(list1)
+
+                                        # One mile later, all 6 were palindromic!
+                                        #[0,1,2,3,4,5]
+                                        list2[5] += 1
+                                        if(list2[0] == list2[5] and list2[1] == list2[4] and list2[2] == list2[3]):
+                                            print(list1)
+                                            # print("")
 
 def main():
     print("Start Program")
-    # print("\n--beesnees--")
-    # beesnees()
-    # print("\n--factorial--")
-    # factorial()
-    # print("\n--fibonacci--")
-    # fibonacci()
-    # print("\n--pyramid--")
-    # pyramid()
-    # print("\n--towercash--")
-    # towercash()
-    # print("\n--wordcount--")
-    # wordcount()
-    # print("\n--cipher--")
-    # cipher()
-    # print("\n--indexer--")
-    # indexer()
-    # print("\n--hangman--")
-    # hangman()
-    # print("\n--palindrome--")
-    # palindrome()
+    print("\n--beesnees--")
+    beesnees()
+    print("\n--factorial--")
+    factorial()
+    print("\n--fibonacci--")
+    fibonacci()
+    print("\n--pyramid--")
+    pyramid()
+    print("\n--towercash--")
+    towercash()
+    print("\n--wordcount--")
+    wordcount()
+    print("\n--cipher--")
+    cipher()
+    print("\n--indexer--")
+    indexer()
+    print("\n--hangman--")
+    hangman()
+    print("\n--palindrome--")
+    palindrome()
     print("\n--odometer--")
     odometer()
     print("End Program")
