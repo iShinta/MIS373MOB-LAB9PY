@@ -1,3 +1,5 @@
+from random import randint
+
 def beesnees():
     res = ""
     for i in range(100):
@@ -104,6 +106,69 @@ def indexer():
             res.append(str(i+1))
     print(res)
 
+def hangman():
+    origin = ['purchasing', 'snake', 'venom', 'makes', 'savagery', 'attainable']
+    list1 = origin[:]
+    again = "yes"
+
+    #Initialization
+    while(again == "yes"):
+        win  = False
+
+        # print list1
+        if(len(list1) > 0):
+            ran = randint(0, len(list1)-1)
+            word = list1[ran]
+            del list1[ran]
+        else:
+            list1 = origin[:]
+
+        nbGuess = len(word) + 3
+        countdown = len(word)
+        list2 = []
+        for i in range(len(word)):
+            list2.append('-')
+
+        while(nbGuess > 0):
+            exist = False
+            display = hangmanListToString(list2)
+            print(display)
+            print("You have " + str(nbGuess) + " guesses left!")
+            guess = raw_input("Enter a letter : ")
+            for i in range(len(list2)):
+                if(word[i] == guess):
+                    exist = True
+                    list2[i] = guess
+                    countdown -= 1
+            if(countdown == 0):
+                win = True
+                break
+            nbGuess -= 1
+            if(not exist): print("The letter doesn't exist")
+
+        if(win): print "You won!"
+        else: print "You lost!"
+        again = raw_input("Play again? [yes/no]: ")
+
+def hangmanListToString(word):
+    res = ""
+    for i in word:
+        res += i + " "
+    return res
+
+def palindrome():
+    win = True
+    user = raw_input("Palindrome: Enter a string : ")
+    for i in range(len(user)):
+        # print(user[i] + "" + user[-i-1])
+        if(user[i] != user[-i-1]):
+            win = False
+    if(win): print("It's a palindrome")
+    else: print("It's not a palindrome")
+
+def odometer():
+    list1 = ['', '', '', '', '', '']
+    print(list1)
 
 def main():
     print("Start Program")
@@ -121,8 +186,14 @@ def main():
     # wordcount()
     # print("\n--cipher--")
     # cipher()
-    print("\n--indexer--")
-    indexer()
+    # print("\n--indexer--")
+    # indexer()
+    # print("\n--hangman--")
+    # hangman()
+    # print("\n--palindrome--")
+    # palindrome()
+    print("\n--odometer--")
+    odometer()
     print("End Program")
 
 main()
