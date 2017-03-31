@@ -92,6 +92,17 @@ def cipher():
             res += (st2[st.find(user[i])])
         print res
 
+def indexer():
+    list1 = ['the', 'cat', 'sat', 'on','the','wall','and','the','cat','sat','on','the','mat', 'where','the','rat','usually','sat','and','the','cat','sat','on','the','rat']
+    print list1
+
+    word = raw_input("Enter a word from the list : ")
+    res = []
+    # print(list1.index(word.lower())+1)
+    for i in range(len(list1)):
+        if(list1[i] == word.lower()):
+            res.append(str(i+1))
+    print(res)
 
 
 def main():
@@ -108,8 +119,10 @@ def main():
     # towercash()
     # print("\n--wordcount--")
     # wordcount()
-    print("\n--cipher--")
-    cipher()
+    # print("\n--cipher--")
+    # cipher()
+    print("\n--indexer--")
+    indexer()
     print("End Program")
 
 main()
