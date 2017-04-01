@@ -1,4 +1,5 @@
 from random import randint
+from copy import deepcopy
 
 def beesnees():
     res = ""
@@ -166,10 +167,11 @@ def palindrome():
     if(win): print("It's a palindrome")
     else: print("It's not a palindrome")
 
+
 def odometer():
     list1 = [0, 0, 0, 0, 0, 0]
 
-    for i in range(10):
+    for i in range(1,10):
         list1[0] = i
         for j in range(10):
             list1[1] = j
@@ -182,6 +184,7 @@ def odometer():
                         for n in range(10):
                             list1[5] = n
                             list2 = list1[:]
+                            # list2 = deepcopy(list1)
                             # print list1
 
                             # the last 4 digits were palindromic
@@ -192,22 +195,34 @@ def odometer():
 
                                 #One mile later, the last 5 numbers were palindromic
                                 #[0,1,2,3,4,5]
-                                list2[5] += 1
+                                # list2[5] += 1
+                                list2 = odometerIntToList(odometerListToInt(list2)+1)
                                 if(list2[1] == list2[5] and list2[2] == list2[4]):
                                     # print(list1)
+                                    # print(list2)
 
                                     #One mile after that, the middle 4 out of 6 numbers were palindromic.
                                     #[0,1,2,3,4,5]
-                                    list2[5] += 1
+                                    # list2[5] += 1
+                                    list2 = odometerIntToList(odometerListToInt(list2)+1)
                                     if(list2[1] == list2[4] and list2[2] == list2[3]):
                                         # print(list1)
+                                        # print(list2)
 
                                         # One mile later, all 6 were palindromic!
                                         #[0,1,2,3,4,5]
-                                        list2[5] += 1
+                                        # list2[5] += 1
+                                        list2 = odometerIntToList(odometerListToInt(list2)+1)
                                         if(list2[0] == list2[5] and list2[1] == list2[4] and list2[2] == list2[3]):
                                             print(list1)
-                                            # print("")
+                                            # print(list2)
+                                            # print("\n")
+
+def odometerListToInt(l):
+    return(int(''.join(map(str, l))))
+
+def odometerIntToList(i):
+    return map(int, str(i))
 
 def main():
     print("Start Program")
