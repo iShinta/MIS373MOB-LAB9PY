@@ -173,15 +173,15 @@ def odometer():
 
     for i in range(1,10):
         list1[0] = i
-        for j in range(10):
+        for j in range(0,10):
             list1[1] = j
-            for k in range(10):
+            for k in range(0,10):
                 list1[2] = k
-                for l in range(10):
+                for l in range(0,10):
                     list1[3] = l
-                    for m in range(10):
+                    for m in range(0,10):
                         list1[4] = m
-                        for n in range(10):
+                        for n in range(0,10):
                             list1[5] = n
                             list2 = list1[:]
                             # list2 = deepcopy(list1)
@@ -214,7 +214,7 @@ def odometer():
                                         # list2[5] += 1
                                         list2 = odometerIntToList(odometerListToInt(list2)+1)
                                         if(list2[0] == list2[5] and list2[1] == list2[4] and list2[2] == list2[3]):
-                                            print(list1)
+                                            print(odometerListToInt(list1))
                                             # print(list2)
                                             # print("\n")
 
